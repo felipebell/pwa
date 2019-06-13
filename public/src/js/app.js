@@ -28,9 +28,9 @@ fetch('https://httpbin.org/ip')
     return response.json();
   }).then(function(data){
     console.log(data);
-  }).catch(function(err)){
+  }).catch(function(err){
     console.log(err);
-  };
+  });
 
 promise.then(function(text){
   return text;
