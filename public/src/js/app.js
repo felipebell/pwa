@@ -25,7 +25,12 @@ var promise = new Promise(function(resolve, reject){
 fetch('https://httpbin.org/ip')
   .then(function(response){
     console.log(response);
-  });
+    return response.json();
+  }).then(function(data){
+    console.log(data);
+  }).catch(function(err)){
+    console.log(err);
+  };
 
 promise.then(function(text){
   return text;
