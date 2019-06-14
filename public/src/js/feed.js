@@ -157,7 +157,7 @@ function onSaveButtonClicked(event) {
     caches.open('user-requested')
       .then(function (cache) {
         cache.add('https://httpbin.org/get');
-        cache.add('/src/images/sf-boat.jpg');
+        cache.add('src/images/sf-boat.jpg');
       });
   }
 }
