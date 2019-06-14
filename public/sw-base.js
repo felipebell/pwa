@@ -2,8 +2,8 @@
 
 
 importScripts('workbox-sw.prod.v2.0.0.js');
-importScripts('/src/js/idb.js');
-importScripts('/src/js/utility.js');
+importScripts('src/js/idb.js');
+importScripts('src/js/utility.js');
 
 const workboxSW = new self.WorkboxSW();
 
@@ -152,8 +152,8 @@ self.addEventListener('push', function(event) {
 
   var options = {
     body: data.content,
-    icon: '/src/images/icons/app-icon-96x96.png',
-    badge: '/src/images/icons/app-icon-96x96.png',
+    icon: 'src/images/icons/app-icon-96x96.png',
+    badge: 'src/images/icons/app-icon-96x96.png',
     data: {
       url: data.openUrl
     }
