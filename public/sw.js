@@ -18,12 +18,12 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     cahces.match(event.request)
-    .then(function(response){
-      if(response){
-        return response;
-      }else{
-        return fetch(event.request);
-      }
-    });
+      .then(function(response){
+        if(response){
+          return response;
+        }else{
+          return fetch(event.request);
+        }
+      })
   );
 });
