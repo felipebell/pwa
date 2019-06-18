@@ -16,9 +16,7 @@ self.addEventListener('install', function(event) {
         cache.add('src/image/main-image.jpg');
         cache.add('https://fonts.googleapis.com/css?family=Roboto:400,700');
         cache.add('https://fonts.googleapis.com/icon?family=Material+Icons');
-        cache.add('https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.indigo-pink.min.css');
-        
-        
+        cache.add('https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.indigo-pink.min.css'); 
       })
   )
 });
@@ -35,7 +33,14 @@ self.addEventListener('fetch', function(event) {
         if(response){
           return response;
         }else{
-          return fetch(event.request);
+          return fetch(event.request)
+          .then(function(res){
+            caches.open('dynamic')
+            .then(function(cache){
+              cache.put(event.request.url, res.clone());
+              return resolveCname;
+            });
+          });
         }
       })
   );
