@@ -38,7 +38,7 @@ self.addEventListener('fetch', function(event) {
             caches.open('dynamic')
             .then(function(cache){
               cache.put(event.request.url, res.clone());
-              return resolveCname;
+              return res;
             });
           });
         }
