@@ -17,7 +17,7 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('fetch', function(event) {
   event.respondWith(
-    cahces.match(event.request)
+    caches.match(event.request)
       .then(function(response){
         if(response){
           return response;
