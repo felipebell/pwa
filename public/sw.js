@@ -30,7 +30,7 @@ self.addEventListener('activate', function(event) {
     caches.keys()
       .then(function(keyList){
         return Promise(keyList.map(function(key){
-          if(key !== 'static-v2' && key !== CACHE_DYNAMIC_NAME){
+          if(key !== CACHE_STATIC_NAME && key !== CACHE_DYNAMIC_NAME){
             console.log('[Service Worker] Removing old cache.', key);
             return caches.delete(key);
           }
