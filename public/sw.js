@@ -1,4 +1,4 @@
-var CACHE_STATIC_NAME = 'static-v9';
+var CACHE_STATIC_NAME = 'static-v10';
 var CACHE_DYNAMIC_NAME = 'dynamic-v2';
 
 self.addEventListener('install', function(event) {
@@ -9,6 +9,7 @@ self.addEventListener('install', function(event) {
         console.log('[Service Worker] Precaching App Shell');
         cache.add('../public/');
         cache.add('index.html');
+        cache.add('offline.html');
         cache.add('src/js/app.js');
         cache.add('src/js/feed.js');
         cache.add('src/js/promise.js');
@@ -56,7 +57,10 @@ self.addEventListener('fetch', function(event) {
             })
           })
           .catch(function(err){
-
+            return caches.open(CACHE_STATIC_NAME)
+              .then(function(cache){
+                return cache.match('offline.html');
+              });
           });
         }
       })
