@@ -86,8 +86,8 @@ if ('caches' in window){
         return response.json();
       }
     })
-    .then(function(date){
-      console.log('From data' ,data);
+    .then(function(data){
+      console.log('From data', data);
       createCard();
     });
 }
