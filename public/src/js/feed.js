@@ -68,10 +68,28 @@ function createCard() {
   sharedMomentsArea.appendChild(cardWrapper);
 }
 
+var url = 'https://httpbin.org/get';
+
 fetch('https://httpbin.org/get')
   .then(function(res) {
     return res.json();
   })
   .then(function(data) {
+    console.
     createCard();
   });
+
+if ('caches' in windows){
+  caches.match(url)
+    .then(function(response){
+      if(response){
+        return response.json();
+      }
+    })
+    .then(function(date){
+      console.log(data);
+      createCard();
+    });
+}
+
+
