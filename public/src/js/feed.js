@@ -79,7 +79,7 @@ fetch('https://httpbin.org/get')
     createCard();
   });
 
-if ('caches' in windows){
+if ('caches' in window){
   caches.match(url)
     .then(function(response){
       if(response){
