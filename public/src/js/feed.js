@@ -41,6 +41,12 @@ closeCreatePostModalButton.addEventListener('click', closeCreatePostModal);
 //   }
 // }
 
+function clearCards(){
+  while(sharedMomentsArea.hasChildNodes()){
+    sharedMomentsArea.removeChild(sharedMomentsArea.lastChild);
+  }
+}
+
 function createCard() {
   var cardWrapper = document.createElement('div');
   cardWrapper.className = 'shared-moment-card mdl-card mdl-shadow--2dp';
@@ -69,13 +75,16 @@ function createCard() {
 }
 
 var url = 'https://httpbin.org/get';
+var networkDataReceived = false;
 
 fetch('https://httpbin.org/get')
   .then(function(res) {
     return res.json();
   })
   .then(function(data) {
+    networkDataReceived = true;
     console.log('From web', data)
+    clearCards();
     createCard();
   });
 
@@ -88,7 +97,10 @@ if ('caches' in window){
     })
     .then(function(data){
       console.log('From data', data);
-      createCard();
+      if(!networkDataReceived){
+        clearCards();
+        createCard();
+      }
     });
 }
 
