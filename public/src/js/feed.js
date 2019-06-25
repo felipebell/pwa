@@ -75,7 +75,7 @@ fetch('https://httpbin.org/get')
     return res.json();
   })
   .then(function(data) {
-    console.
+    console.log('From web', data)
     createCard();
   });
 
@@ -87,7 +87,7 @@ if ('caches' in windows){
       }
     })
     .then(function(date){
-      console.log(data);
+      console.log('From data' ,data);
       createCard();
     });
 }
